@@ -21,7 +21,7 @@
 
 | Column           | Type        | Options                        |
 | ---------------  | ----------  | -----------------------------  |
-| user_id          | references  | null: false, foreign_key: true |
+| user             | references  | null: false, foreign_key: true |
 | name             | string      | null: false                    |
 | explanation      | string      | null: false                    |
 | category_id      | integer     | null: false                    |
@@ -39,10 +39,10 @@
 
 ## purchase_items テーブル
 
-| Column     | Type        | Options                        |
-| ---------  | ----------  | -----------------------------  |
-| user_id    | references  | null false, foreign_key: true  |
-| item_id    | references  | null false, foreign_key: true  |
+| Column  | Type        | Options                        |
+| ------  | ----------  | -----------------------------  |
+| user    | references  | null false, foreign_key: true  |
+| item    | references  | null false, foreign_key: true  |
 
 ### Association
 
@@ -54,9 +54,9 @@
 
 | Column            | Type        | Options                        |
 | ----------------  | -------     | -----------------------------  |
-| purchase_item_id  | references  | null false, foreign_key: true  |
+| purchase_item     | references  | null false, foreign_key: true  |
 | post_code         | string      | null false                     |
-| prefecure         | string      | null false                     |
+| prefecure_id      | integer     | null false                     |
 | city              | string      | null false                     |
 | adress            | string      | null false                     |
 | building          | string      |                                |
