@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
@@ -9,9 +10,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :arrival_date
 
   
-  #空の投稿を保存できないようにする
-  # validates :, presence: true
-
-  #ジャンルの選択が「--」の時は保存できないようにする
-  # validates :category_id, numericality: { other_than: 1 }
+  validates :name, :explanation, :price, :image, :user, presence: true
+  validates :category_id, :status_id, :delivery_fee_id, :prefecture_id,:arrival_date_id, numericality: { other_than: 1, message: 'select' }
+  validates :price, format: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  validates :price, numericality: { greater_than: 300, less_than: 9999999, message: 'Out of setting range' }  
 end
