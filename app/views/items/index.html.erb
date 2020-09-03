@@ -159,7 +159,7 @@
       </li>
 
       <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+      <%# 商品がある場合は表示されない %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
@@ -177,7 +177,7 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
+      <%# //商品がある場合は表示されない %>
       <%# //商品がない場合のダミー %>
     </ul>
     <% end %>
@@ -185,9 +185,7 @@
   <%# //商品一覧 %>
 </div>
 <div class='purchase-btn'>
-  <span class='purchase-btn-text'>出品する</span>
-  <a href="/items/new">
+  <span><%= link_to '出品する', new_item_path, class: "purchase-btn-text" %></span>
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-  </a>
 </div>
 <%= render "shared/footer" %>
