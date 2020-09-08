@@ -5,7 +5,11 @@ class PurchaseItemsController < ApplicationController
 
   
   def index
-    @purchase_item = PurchaseItemDestination.new
+    if @item.purchase_item.blank?
+      @purchase_item = PurchaseItemDestination.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
