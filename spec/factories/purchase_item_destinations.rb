@@ -4,7 +4,7 @@ FactoryBot.define do
     prefecture_id { 15 }
     city { '横浜市緑区' }
     address { '1-1' }
-    building { nil }
+    building { '横浜ビル' }
     phone_number { 19_012_345_678 }
     price { 2000 }
     user_id { 7 }

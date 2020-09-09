@@ -17,6 +17,5 @@ class PurchaseItemDestination
   def save
     purchase_item = PurchaseItem.create(user_id: user_id, item_id: item_id)
     Destination.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, purchase_item_id: purchase_item.id)
-    # Order.create(price: price, token: token)
   end
 end

@@ -7,6 +7,11 @@ RSpec.describe PurchaseItemDestination, type: :model do
     end
 
     it 'すべての値が正しく入力されていれば保存できること' do
+      expect(@purchase_item).to be_valid
+    end
+    it '建築物が空でも保存できること' do
+      @purchase_item.building = nil
+      expect(@purchase_item).to be_valid
     end
     it 'トークンが生成されていないと保存できない' do
       @purchase_item.token = nil
