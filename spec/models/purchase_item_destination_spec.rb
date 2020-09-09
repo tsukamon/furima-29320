@@ -3,32 +3,13 @@ require 'rails_helper'
 RSpec.describe PurchaseItemDestination, type: :model do
   describe '商品購入機能' do
     before do
-      @nubmer = 4_242_424_242_424_242
-      @cvc = 123
-      @exp_month = 3
-      @exp_year = 23
       @purchase_item = FactoryBot.build(:purchase_item_destination)
     end
 
     it 'すべての値が正しく入力されていれば保存できること' do
     end
-    it 'カード情報が空だと保存できない' do
-      @number = nil
-      @purchase_item.valid?
-      expect(@purchase_item.errors.full_messages).to include("Token can't be blank")
-    end
-    it 'カードの有効期限（月）空だと保存できない' do
-      @exp_month = nil
-      @purchase_item.valid?
-      expect(@purchase_item.errors.full_messages).to include("Token can't be blank")
-    end
-    it 'カードの有効期限（年）空だと保存できない' do
-      @exp_year = nil
-      @purchase_item.valid?
-      expect(@purchase_item.errors.full_messages).to include("Token can't be blank")
-    end
-    it 'カードのセキュリティコードが空だと保存できない' do
-      @cvc = nil
+    it 'トークンが生成されていないと保存できない' do
+      @purchase_item.token = nil
       @purchase_item.valid?
       expect(@purchase_item.errors.full_messages).to include("Token can't be blank")
     end

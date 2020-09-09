@@ -9,5 +9,6 @@ FactoryBot.define do
     price { 2000 }
     user_id { 7 }
     item_id { 14 }
+    token { 'hoge_1234567' }
   end
 end
