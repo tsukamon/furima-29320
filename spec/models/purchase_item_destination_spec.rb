@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PurchaseItemDestination, type: :model do
   describe '商品購入機能' do
     before do
-      @nubmer = 4242424242424242
+      @nubmer = 4_242_424_242_424_242
       @cvc = 123
       @exp_month = 3
       @exp_year = 23
@@ -40,13 +40,13 @@ RSpec.describe PurchaseItemDestination, type: :model do
     it '郵便番号にハイフン(-)がないと保存できない' do
       @purchase_item.post_code = '1234567'
       @purchase_item.valid?
-      expect(@purchase_item.errors.full_messages).to include("Post code input correctly include hyphen(-)")
+      expect(@purchase_item.errors.full_messages).to include('Post code input correctly include hyphen(-)')
     end
     it '発送先の都道府県が選択されていないと保存できない' do
       @purchase_item.prefecture_id = 1
       @purchase_item.valid?
-      expect(@purchase_item.errors.full_messages).to include("Prefecture select")
-    end  
+      expect(@purchase_item.errors.full_messages).to include('Prefecture select')
+    end
     it '発送先の市区町村が空だと保存できない' do
       @purchase_item.city = nil
       @purchase_item.valid?
@@ -60,12 +60,12 @@ RSpec.describe PurchaseItemDestination, type: :model do
     it '電話番号が空だと保存できない' do
       @purchase_item.phone_number = nil
       @purchase_item.valid?
-      expect(@purchase_item.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid",)
+      expect(@purchase_item.errors.full_messages).to include("Phone number can't be blank", 'Phone number is invalid')
     end
     it '電話番号にハイフンが入っていると保存できない' do
       @purchase_item.phone_number = '090-2344-2345'
       @purchase_item.valid?
-      expect(@purchase_item.errors.full_messages).to include("Phone number is invalid",)
+      expect(@purchase_item.errors.full_messages).to include('Phone number is invalid')
     end
   end
 end

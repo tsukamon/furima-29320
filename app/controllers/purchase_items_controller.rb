@@ -15,8 +15,8 @@ class PurchaseItemsController < ApplicationController
     @purchase_item = PurchaseItemDestination.new(purchase_item_params)
     if @purchase_item.valid?
       pay_item
-      @purchase_item.save 
-      return redirect_to root_path
+      @purchase_item.save
+      redirect_to root_path
     else
       render 'index'
     end
@@ -28,14 +28,13 @@ class PurchaseItemsController < ApplicationController
     params.permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number, :token).merge(user_id: current_user.id).merge(item_id: @item.id, price: @item.price)
   end
 
-  
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-     amount: purchase_item_params[:price],  
-     card: purchase_item_params[:token],    
-     currency:'jpy'                
-   )
+      amount: purchase_item_params[:price],
+      card: purchase_item_params[:token],
+      currency: 'jpy'
+    )
   end
 
   def item_set
@@ -43,8 +42,6 @@ class PurchaseItemsController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id == @item.user_id
-      return redirect_to root_path
-    end
+    return redirect_to root_path if current_user.id == @item.user_id
   end
 end

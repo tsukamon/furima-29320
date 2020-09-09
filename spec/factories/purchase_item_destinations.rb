@@ -5,7 +5,7 @@ FactoryBot.define do
     city { '横浜市緑区' }
     address { '1-1' }
     building { nil }
-    phone_number { 19012345678 }
+    phone_number { 19_012_345_678 }
     price { 2000 }
     user_id { 7 }
     item_id { 14 }
