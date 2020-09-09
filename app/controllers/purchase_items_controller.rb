@@ -3,7 +3,6 @@ class PurchaseItemsController < ApplicationController
   before_action :item_set, only: [:index, :create]
   before_action :move_to_index, only: :index
 
-  
   def index
     if @item.purchase_item.blank?
       @purchase_item = PurchaseItemDestination.new
