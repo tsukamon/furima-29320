@@ -1,5 +1,17 @@
 <% @item.each do |item| %>
 <li class='list'>
+  <%= link_to item_path(item.id) do %>
+  <div class='item-img-content'>
+    <%= image_tag item.image, class: "item-img" %>  
+    <%# 商品が売れていればsold outの表示 %>
+    <% unless item.purchase_item.blank? %>
+    <div class='sold-out'>
+      <span>Sold Out!!</span>
+    </div>
+    <% end %>
+    <%# //商品が売れていればsold outの表示 %>
+  </div>
+  <% end %>
   <div class='item-info'>
     <h3 class='item-name'>
       <%= item.name %>
@@ -12,20 +24,5 @@
       </div>
     </div>
   </div>
-  <%= link_to item_path(item.id) do %>
-  <div class='item-img-content'>
-  <% item.images.each do |image| %>
-      <%= image_tag image, class: "item-img" %> 
-   <%# <%= image_tag item.images, class: "item-img" %> 
-  <% end %> 
-    <%# 商品が売れていればsold outの表示 %>
-    <% unless item.purchase_item.blank? %>
-    <div class='sold-out'>
-      <span>Sold Out!!</span>
-    </div>
-    <% end %>
-    <%# //商品が売れていればsold outの表示 %>
-  </div>
-  <% end %>
 </li>
 <% end %>
